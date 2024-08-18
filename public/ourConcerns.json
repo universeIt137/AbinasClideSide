@@ -1,0 +1,24 @@
+[
+
+    {
+        "id": "1",
+        "name": "FINCA Medico Technology",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn7upAzI-7HyVuZmB0U9aWRNGg9o8eycjrhQ&usqp=CAU"
+    },
+    {
+        "id": "2",
+        "name": "FINCA Education",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CQjgMhJBPdwWDsuMkriR26SqTq-AD-gygASD2zeZ8YLrjMAxLARRNQMNPLjsfkonVHw&usqp=CAU"
+    },
+    {
+        "id": "3",
+        "name": "Abinash Shipping Lines",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn7upAzI-7HyVuZmB0U9aWRNGg9o8eycjrhQ&usqp=CAU"
+    },
+    {
+        "id": "4",
+        "name": "FINCA Property Management",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CQjgMhJBPdwWDsuMkriR26SqTq-AD-gygASD2zeZ8YLrjMAxLARRNQMNPLjsfkonVHw&usqp=CAU"
+    }
+    
+]

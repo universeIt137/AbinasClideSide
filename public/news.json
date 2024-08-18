@@ -1,0 +1,29 @@
+[
+    {
+        "id": "1",
+        "newsImage": "https://images.prothomalo.com/prothomalo-bangla%2F2023-07%2Fa3e216a1-39ab-49f6-a334-14c431c63cd7%2FUntitled_1.jpg?rect=20%2C0%2C570%2C380&auto=format%2Ccompress&fmt=webp&format=webp&w=300&dpr=1.0",
+        "title": "বিদেশিদের নিরাপত্তা নিশ্চিত",
+        "description": "description for news one"
+    },
+    {
+        "id": "2",
+        "newsImage": "https://images.prothomalo.com/prothomalo-bangla%2F2023-09%2Fceb67b46-07af-409d-a4e7-3335f7f5a3bf%2FWhen_stormy_rain_came_to_Mirpur_field_5.jpg?rect=297%2C0%2C3285%2C2190&auto=format%2Ccompress&fmt=webp&format=webp&w=300&dpr=1.0",
+        "title": "শেষ ম্যাচে বিশ্রাম চান তামিম ও লিটন",
+        "description": "নিউজিল্যান্ডের বিপক্ষে তিন ম্যাচের ওয়ানডে সিরিজের শেষ ম্যাচ থেকে বিশ্রাম চেয়েছেন তামিম ইকবাল ও লিটন দাস। বিসিবি সূত্রে জানা গেছে, এই দুই ওপেনারকে ছাড়াই আগামী ২৬ সেপ্টেম্বর সিরিজের শেষ ম্যাচ খেলবে বাংলাদেশ দল। "
+
+    },
+    {
+        "id": "3",
+        "newsImage": "https://images.prothomalo.com/prothomalo-bangla%2F2023-09%2F6dc6d5a0-7635-468f-9a90-c2c9fc15494e%2FBPL_Draft_BCB.jpg?rect=208%2C0%2C1520%2C1013&auto=format%2Ccompress&fmt=webp&format=webp&w=300&dpr=1.0",
+        "title": "আজ টিভিতে যা দেখবেন",
+        "description": "description for news three"
+
+    },
+    {
+        "id": "4",
+        "newsImage": "https://images.prothomalo.com/prothomalo-bangla%2F2023-07%2F072c0b71-b1bb-419f-ae66-b6d5c6b1a142%2FTAMIM_IQBAL_CTG_Photos__2_.jpeg?rect=1%2C0%2C1280%2C853&auto=format%2Ccompress&fmt=webp&format=webp&w=300&dpr=1.0",
+        "title": "বললেন তামিম",
+        "description": "description for news four"
+
+    }
+]
