@@ -1,13 +1,14 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 import Cookies from "universal-cookie";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+
 const cookies = new Cookies();
+const backendURL = 'https://backendserver.abinashfoundation.com/api/v1';
 
 export const login = async (data) => {
-  const axiosPublic = useAxiosPublic();
-  const response = await axiosPublic
-    .post("/user/login", data)
+  
+  const response = await axios
+    .post(`${backendURL}/user/login`, data)
     .catch((error) => {
       toast.error("error");
       throw error.response.data;
@@ -24,9 +25,8 @@ export const login = async (data) => {
   return response.data;
 };
 export const registration = async (data) => {
-  const axiosPublic = useAxiosPublic();
-  const response = await axiosPublic
-    .post("/user/signup", data)
+  const response = await axios
+    .post(`${backendURL}/user/signup`, data)
     .catch((error) => {
       toast.error("error! use deffrent phone");
       throw error.response.data;
@@ -44,9 +44,8 @@ export const registration = async (data) => {
 };
 
 export const logout = async () => {
-  const axiosPublic = useAxiosPublic();
-  const response = await axiosPublic
-    .post("/user/logout")
+  const response = await axios
+    .post(`${backendURL}/user/logout`)
     .then((res) => {
       cookies.remove("name", { path: "/" });
       cookies.remove("userId", { path: "/" });
