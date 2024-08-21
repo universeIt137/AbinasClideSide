@@ -84,6 +84,9 @@ const PersonalInformation = ({ onNext }) => {
     ) {
       const payload = generatePayload(personalInformation);
       setIsLoading(true);
+
+      
+
       fetch(
         `http://localhost:5000/api/v1/userapplication/updatepersonalinformation/${phone}`,
         {
