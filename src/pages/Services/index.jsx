@@ -5,6 +5,7 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { toast } from 'react-toastify';
 import Loader from "../Shared/Loader";
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 
 
@@ -16,11 +17,12 @@ const Services = () => {
     const [service, setService] = useState({})
     const { id } = useParams()
     const [isLoading, setIsLoading] = useState(false)
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
         const getServicesData = async () => {
             setIsLoading(true)
-            const { data } = await axios.get(`http://localhost:5000/api/v1/services`);
+            const { data } = await axiosPublic.get(`/services`);
             const service = data?.data?.find(service => service?._id === id);
             if (service) {
                 setService(service)
@@ -28,7 +30,7 @@ const Services = () => {
             }
         }
         getServicesData()
-    }, [id])
+    }, [id, axiosPublic])
 
 
     const handleServiceApply = async () => {
@@ -39,7 +41,7 @@ const Services = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:5000/api/v1/apply-service', applyInfo, {
+            const response = await axiosPublic.post('/apply-service', applyInfo, {
                 headers: {
                     Authorization: accessToken
                 }
