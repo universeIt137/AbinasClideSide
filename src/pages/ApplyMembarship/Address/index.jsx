@@ -5,6 +5,7 @@ import UserInput from '../../Shared/UserInput';
 import Cookies from 'universal-cookie';
 import { toast } from 'react-toastify';
 import Loader from '../../Shared/Loader';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const Address = () => {
     const cookies = new Cookies()
@@ -13,7 +14,8 @@ const Address = () => {
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate();
     const phone = cookies.get('phone')
-    const accessToken = cookies.get('accessToken')
+    const accessToken = cookies.get('accessToken');
+    const axiosPublic = useAxiosPublic();
 
 
 

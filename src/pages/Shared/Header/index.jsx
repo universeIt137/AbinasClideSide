@@ -23,7 +23,7 @@ const Header = () => {
 
   return (
     <div className="z-40">
-      <div className={`sm:w-[80%] md:w-[70%] xl:w-[1300px] lg:w-[100%] lg:mx-auto `}>
+      <div className={`sm:w-[80%] md:w-[70%] xl:w-[1300px] lg:w-[100%] lg:mx-auto`}>
         {/* logo address and social icon */}
         <div className="sm:w-[100%] w-[1300px] lg:mx-auto logoInfo ">
           <div className="logo ml-3">
@@ -60,7 +60,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div>
+      <div className="">
         <div className="lg:hidden">
           <div className="">
             <div onClick={() => setToggle(!toggle)} className="text-2xl inline-block absolute right-2 top-0 p-3"> {toggle? <Icon icon="fluent-emoji-high-contrast:cross-mark"/>  : <FontAwesomeIcon icon={faBars}/> }
@@ -76,7 +76,7 @@ const Header = () => {
           )}
         </div>
 
-        <div className="hidden  lg:block"  >
+        <div className="hidden  lg:block "  >
           <Navbar toggle={toggle} setToggle={setToggle}></Navbar>
           {/* <HeaderNavMenu /> */}
         </div>

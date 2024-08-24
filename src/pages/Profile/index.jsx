@@ -17,6 +17,7 @@ import LoanMenu from './LoanMenu';
 import AccountActivity from './AccountActivity';
 import { useMutation } from 'react-query';
 import { logout } from '../../contexts/auth';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 
 const Profile = () => {
@@ -34,31 +35,53 @@ const Profile = () => {
     const [pendingDPSList, setPendingDPSList] = useState([]);
     const memberId = cookies.get('memberId');
     const logouthandler = useMutation(logout);
+    const axiosPublic = useAxiosPublic();
 
     // console.log(phone)
-
     useEffect(() => {
-        setIsLoading(true)
-        fetch(`http://localhost:5000/api/v1/userapplication/getuserapplication/${phone}`, {
+        setIsLoading(true);
+        axiosPublic.get(`/userapplication/getuserapplication/${phone}`, {
             headers: {
                 authorization: accessToken
             },
             withCredentials: true,
         })
-            .then((res) => res.json())
-            .then((data) => {
-                // console.log(data)
-                setCurrentUser(data?.data)
-                // console.log(data?.data?.progressPercentage)
-                setprogressPercentage(data?.data?.progressPercentage)
-                setIsLoading(false)
-            })
-            .catch((err) => console.log(err));
-    }, [phone, accessToken])
+        .then((res) => {
+            const data = res.data;
+            setCurrentUser(data?.data);
+            setprogressPercentage(data?.data?.progressPercentage);
+            setIsLoading(false);
+        })
+        .catch((err) => {
+            console.log(err);
+            setIsLoading(false);
+        });
+    }, [phone, accessToken, axiosPublic]);
+
+    
+
+    // useEffect(() => {
+    //     setIsLoading(true)
+    //     fetch(`http://localhost:5000/api/v1/userapplication/getuserapplication/${phone}`, {
+    //         headers: {
+    //             authorization: accessToken
+    //         },
+    //         withCredentials: true,
+    //     })
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             // console.log(data)
+    //             setCurrentUser(data?.data)
+    //             // console.log(data?.data?.progressPercentage)
+    //             setprogressPercentage(data?.data?.progressPercentage)
+    //             setIsLoading(false)
+    //         })
+    //         .catch((err) => console.log(err));
+    // }, [phone, accessToken])
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/v1/dpsform?approveStatus=pending&memberID=${memberId}`, {
+        axiosPublic.get(`/dpsform?approveStatus=pending&memberID=${memberId}`, {
             headers: {
                 Authorization: accessToken
             }
@@ -71,7 +94,7 @@ const Profile = () => {
         });
 
 
-    }, [memberId, accessToken, pendingDPSList])
+    }, [memberId, accessToken, pendingDPSList, axiosPublic])
 
 
     const toggleDropdown = () => {

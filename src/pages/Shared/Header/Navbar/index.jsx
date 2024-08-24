@@ -8,7 +8,8 @@ import fincaImg from "../../../../images/home/image7.png";
 import islImg from "../../../../images/home/image8.png";
 import Cookies from "universal-cookie";
 import { Icon } from '@iconify/react';
-import axios from "axios";
+
+import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 
 
 const Navbar = ({toggle, setToggle}) => {
@@ -19,27 +20,30 @@ const Navbar = ({toggle, setToggle}) => {
   const userData = cookies.get('phone')
   const name = cookies.get('name')
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
 
   useEffect(() => {
     const getServicesData = async () => {
-      const { data } = await axios.get('http://localhost:5000/api/v1/services');
+      const { data } = await axiosPublic.get('/services');
       setServices(data?.data);
     }
     getServicesData()
     
     const getAboutData = async () => {
-      const { data } = await axios.get('http://localhost:5000/api/v1/about-us');
+      const { data } = await axiosPublic.get('/about-us');
       setAbouts(data?.data)
     }
     getAboutData()
 
     const getOurConcernData = async () => {
-      const { data } = await axios.get('http://localhost:5000/api/v1/our-concern');
+      const { data } = await axiosPublic.get('/our-concern');
       setOurConcerns(data?.data)
     }
     getOurConcernData()
-  }, [])
+  }, [axiosPublic])
+
+
 
   return (
     <div className=''>

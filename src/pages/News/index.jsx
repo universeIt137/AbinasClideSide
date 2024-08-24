@@ -2,18 +2,20 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Loader from '../Shared/Loader';
 import { useNavigate } from 'react-router-dom';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 
 const News = () => {
     const [allNews, setAllNews] = useState([])
     const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
         try{
             const getAllNews = async () => {
                 setIsLoading(true)
-                const { data } = await axios.get('http://localhost:5000/api/v1/news');
+                const { data } = await axiosPublic.get('/news');
                 setAllNews(data?.data);
                 setIsLoading(false)
             }
