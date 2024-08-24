@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import markarImg from '../../../images/mapMarkar/markar.png';
 import { icon } from 'leaflet';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 
 
@@ -17,8 +18,10 @@ const redMarkerIcon = icon({
     popupAnchor: [0, -32],
 });
 
+
 const ContactUs = () => {
 
+    const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const cookies = new Cookies()
     const accessToken = cookies.get('accessToken')
@@ -26,7 +29,7 @@ const ContactUs = () => {
 
     const onsubmit = async (data) => {
         if (accessToken) {
-            const response = await axios.post('http://localhost:5000/api/v1/get-in-touch/contact', data, {
+            const response = await axiosPublic.post('/get-in-touch/contact', data, {
                 headers: {
                     Authorization: accessToken
                 }

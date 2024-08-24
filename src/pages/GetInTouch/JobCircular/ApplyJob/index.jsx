@@ -15,7 +15,7 @@ const ApplyJob = () => {
             formData.append(key, data[key])
         }
         console.log(Object.fromEntries(formData));
-        toast.success('api not ready, check console')
+        toast.success('api not ready')
     }
 
     return (
