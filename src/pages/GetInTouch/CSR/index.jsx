@@ -3,17 +3,19 @@ import csrImg from '../../../images/csr/image1.png'
 import SingleCSR from './SingleCSR';
 import axios from 'axios';
 import Loader from '../../Shared/Loader';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 
 const CSR = () => {
     const [allCSR, setAllCSR] = useState([]);
     const [hasCSR, setHasCSR] = useState(true);
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
         const getData = async () => {
             setIsLoading(true)
-            const { data } = await axios.get('http://localhost:5000/api/v1/get-in-touch/csr');
+            const { data } = await axiosPublic.get('/get-in-touch/csr');
             if (data?.data.length !== 0) {
                 setAllCSR(data?.data);
                 setHasCSR(true);

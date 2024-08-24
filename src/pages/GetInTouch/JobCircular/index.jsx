@@ -2,17 +2,19 @@ import React, { useEffect, useState } from 'react';
 import SingleJob from './SingleJob';
 import axios from 'axios';
 import Loader from '../../Shared/Loader';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const JobCircular = () => {
     const [jobCirculars, setJobCirculars] = useState([])
     const [hasJobCircular, setHasJobCircular] = useState(true);
     const [isLoading, setIsLoading] = useState(false)
+    const axiosPublic = useAxiosPublic();
 
 
     useEffect(() => {
         const getData = async () => {
             setIsLoading(true);
-            const { data } = await axios.get('http://localhost:5000/api/v1/get-in-touch/job-circular')
+            const { data } = await axiosPublic.get('/get-in-touch/job-circular')
             if (data?.data.length !== 0) {
                 setJobCirculars(data?.data);
                 setHasJobCircular(true);
@@ -23,7 +25,7 @@ const JobCircular = () => {
             }
         }
         getData()
-    }, [])
+    }, [axiosPublic])
 
     // console.log(jobCirculars)
 

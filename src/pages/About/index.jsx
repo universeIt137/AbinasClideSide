@@ -23,11 +23,11 @@ const About = () => {
             }
         }
         getAboutsData()
-    }, [id])
+    }, [id, axiosPublic])
     
     return (
         <div className='relative'>
-            {isLoading && <Loader></Loader>}
+            {/* {isLoading && <Loader></Loader>} */}
             <div className='xl:w-[1300px] sm:w-[100%] lg:w-[100%] mx-auto mt-10'>
                 <div className='text-black border-2 border-secondary border-solid font-bold text-center text-3xl bg-gradient-to-br text-transparent bg-clip-text from-blue-800 via-blue-800 to-blue-300 rounded-lg mx-auto w-[15%] sm:w-[80%] lg:w-[40%] h-[45px] bg-gray-300 shadow-xl'>{about?.name}</div>
 

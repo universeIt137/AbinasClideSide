@@ -4,17 +4,19 @@ import noticeImg from '../../../images/notice/img1.png'
 import noticeImg1 from '../../../images/notice/img2.png'
 import axios from 'axios';
 import Loader from '../../Shared/Loader';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const Notice = () => {
     const [hasNotice, setHasNotice] = useState(true);
     const [notices, setNotices] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const axiosPublic = useAxiosPublic();
 
 
     useEffect(() => {
         const getData = async () => {
             setIsLoading(true);
-            const { data } = await axios.get('http://localhost:5000/api/v1/get-in-touch/notice')
+            const { data } = await axiosPublic.get('/get-in-touch/notice')
             if (data?.data.length !== 0) {
                 setNotices(data?.data)
                 setHasNotice(true)
