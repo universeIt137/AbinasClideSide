@@ -3,16 +3,17 @@ import vissionImg from '../../images/about/vission.png'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Loader from '../Shared/Loader';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 const About = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [about, setAbout] = useState({})
     const {id} = useParams();
-
+    const axiosPublic = useAxiosPublic();
     useEffect(() => {
         const getAboutsData = async () => {
             setIsLoading(true);
-            const { data } = await axios.get(`http://localhost:5000/api/v1/about-us`);
+            const { data } = await axiosPublic.get(`/api/v1/about-us`);
             const singleAbout = data?.data?.find(service => service._id === id);
             if (singleAbout) {
                 setAbout(singleAbout);

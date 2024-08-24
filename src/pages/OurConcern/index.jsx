@@ -2,18 +2,20 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from '../Shared/Loader';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 const OurConcern = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [ourConcerns, setOurConcerns] = useState({})
     const { id } = useParams();
+    const axiosPublic = useAxiosPublic();
 
 
     useEffect(() => {
         // use function inside useEffect for achive asynchronus vehavior for aboid callback
         const getOurConcernsData = async () => {
             setIsLoading(true)
-            const { data } = await axios.get(`http://localhost:5000/api/v1/our-concern`);
+            const { data } = await axiosPublic.get(`/our-concern`);
             const singleConcern = data?.data?.find(service => service._id === id);
             if (singleConcern) {
                 setOurConcerns(singleConcern);
@@ -23,7 +25,7 @@ const OurConcern = () => {
             }
         }
         getOurConcernsData()
-    }, [id])
+    }, [id, axiosPublic])
 
 
     return (

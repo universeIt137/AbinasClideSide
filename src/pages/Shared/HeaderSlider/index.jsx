@@ -4,7 +4,7 @@ import banner3 from '../../../images/banner/coverPhoto.png'
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const HeaderSlider = () => {
     const [progressPercentage, setProgressPercentage] = useState({})
@@ -13,10 +13,12 @@ const HeaderSlider = () => {
     const cookies = new Cookies();
     const phone = cookies.get('phone');
     const accessToken = cookies.get('accessToken');
+    const axiosPublic = useAxiosPublic();
+
     useEffect(() => {
         if (phone) {
-            axios
-                .get(`http://localhost:5000/api/v1/userapplication/getuserapplication/${phone}`, {
+            axiosPublic
+                .get(`/userapplication/getuserapplication/${phone}`, {
                     headers: {
                         Authorization: accessToken
                     }
@@ -31,7 +33,7 @@ const HeaderSlider = () => {
                 })
                 .catch(err => {
                     console.log(err)
-                })  
+                })
         }
     }, [phone, accessToken])
 
@@ -79,7 +81,7 @@ const HeaderSlider = () => {
             <div className="py-2 absolute xl:right-[45%] lg:right-[50%] sm:right-[210px] md:right-[43%] top-[113px] sm:top-[80px] md:top-[140px] lg:top">
                 <div className='absolute xl:top-[200px] lg:top-[180px] sm:top-0 lg:w-[500px] sm:w-[200px] md:w-[280px] lg:text-4xl sm:text-sm md:text-xl text-white font-semibold leading-[60px]'><h2>স্বাস্থ্যক্ষেত্রে উন্নয়নের জন্য সেবিকাদের উন্নয়ন আবশ্যক ।</h2></div>
 
-                <button onClick={hanldeApplyMemberForm} className={`absolute xl:top-[300px] lg:top-[270px] sm:top-11 md:top-14 left-[100px] sm:left-0 h-[40px] sm:h-[30px] text-md rounded lg:w-[230px] sm:w-[150px] sm:text-[10px] lg:text-lg bg-secondary text-white font-semibold p-2 md:mt-2 sm:py-0 text-center hover:text-[12px] sm:hover:text-[13px] lg:hover:text-xl ${progressPercentage === 100 ? 'hidden': ''}`}>{!isExistUser ? 'Apply Membership' : 'Complete Membership'}</button>
+                <button onClick={hanldeApplyMemberForm} className={`absolute xl:top-[300px] lg:top-[270px] sm:top-11 md:top-14 left-[100px] sm:left-0 h-[40px] sm:h-[30px] text-md rounded lg:w-[230px] sm:w-[150px] sm:text-[10px] lg:text-lg bg-secondary text-white font-semibold p-2 md:mt-2 sm:py-0 text-center hover:text-[12px] sm:hover:text-[13px] lg:hover:text-xl ${progressPercentage === 100 ? 'hidden' : ''}`}>{!isExistUser ? 'Apply Membership' : 'Complete Membership'}</button>
                 {/* <button className='absolute top-[330px] h-[40px] left-[760px] text-md rounded w-[100px] bg-secondary text-white font-semibold p-2 hover:text-lg'>Details</button>     */}
 
             </div>
