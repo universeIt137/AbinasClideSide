@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Loader from '../Shared/Loader';
 import { useNavigate } from 'react-router-dom';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
+import ImageUrl from '../../images/ImageUrl';
 
 
 const News = () => {
@@ -10,6 +11,7 @@ const News = () => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
+    const { newsUrl } = ImageUrl();
 
     useEffect(() => {
         try{
@@ -36,7 +38,7 @@ const News = () => {
                     allNews?.map((singleNews, index) => (
                         <div key={index}>
                             <div onClick={() => navigate(`/v/news/${singleNews?._id}`)} className="card card-compact bg-base-100 shadow-xl md:shadow-sm sm:shadow-sm md:border-[1px] max-h-[300px] lg:h-[200px] overflow-auto cursor-pointer">
-                                <figure><img src={singleNews?.newsImage} alt="avater" className='w-[300px] transition-transform transform scale-100 hover:scale-110 sm:w-[70%] md:w-[70%]' /></figure>
+                                <figure><img src={`${newsUrl}/${singleNews?.newsImage}`} alt="avater" className='w-[300px] transition-transform transform scale-100 hover:scale-110 sm:w-[70%] md:w-[70%]' /></figure>
                                 <div className="card-body h-[80px] md:mx-auto lg:mx-0">
                                     <h2 className="card-title">{singleNews?.title}</h2>
                                     <p>{singleNews?.description}</p>

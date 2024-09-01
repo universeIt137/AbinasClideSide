@@ -34,7 +34,7 @@ const OurConcern = () => {
             <div className='xl:w-[1300px] lg:w-[100%] sm:w-[100%] mx-auto mt-3'>
                 <div className="card card-compact bg-white shadow-lg lg:w-[60%] sm:w-[90%] mx-auto border-2 border-secondary">
                     <div className="card w-96 sm:w-[100%] bg-base-100 ">
-                        <div className="card-body">
+                        <div className="card-body text-white">
                             <h2 className="card-title">{ourConcerns?.name}</h2>
                             <h2>{ourConcerns?.location}</h2>
                             <p>{ourConcerns?.description}</p>

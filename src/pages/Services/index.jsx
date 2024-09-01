@@ -6,6 +6,8 @@ import Cookies from 'universal-cookie';
 import { toast } from 'react-toastify';
 import Loader from "../Shared/Loader";
 import useAxiosPublic from '../../hooks/useAxiosPublic';
+import ImageUrl from '../../images/ImageUrl';
+
 
 
 
@@ -18,6 +20,8 @@ const Services = () => {
     const { id } = useParams()
     const [isLoading, setIsLoading] = useState(false)
     const axiosPublic = useAxiosPublic();
+    const { serviceUrl } = ImageUrl();
+    
 
     useEffect(() => {
         const getServicesData = async () => {
@@ -32,6 +36,7 @@ const Services = () => {
         getServicesData()
     }, [id, axiosPublic])
 
+    console.log('From Service page', service);
 
     const handleServiceApply = async () => {
         const applyInfo = {
@@ -56,16 +61,17 @@ const Services = () => {
 
     }
 
+    console.log(service);
     return (
         <div className='xl:w-[1300px] xl:mx-auto relative'>
             {isLoading && <Loader/>}
             <div className='sm:w-[100%] lg:w-[100%] mx-auto mt-5'>
                 <div className='text-black border-2 border-secondary border-solid font-bold text-center text-3xl bg-gradient-to-br text-transparent bg-clip-text from-blue-800 via-blue-800 to-blue-300 rounded-lg mx-auto w-[30%] sm:w-[80%] md:w-[40%] h-[9%] bg-gray-300 shadow-xl'>{service?.serviceName}</div>
                 <div className='w-[60%] lg:w-[50%] mx-auto sm:mt-5'>
-                    <img src={service?.serviceImage} alt='dps' className='w-full sm:h-[150px] md:h-[300px]' />
+                    <img src={`${serviceUrl}/${service?.serviceImage}`} alt='dps' className='w-full sm:h-[150px] md:h-[300px]' />
                     <h2 className='lg:text-3xl sm:text-xl font-bold text-center bg-gradient-to-br text-transparent bg-clip-text from-blue-800 to-blue-500'>{service?.title}</h2>
                 </div>
-                <div className='px-11'>
+                <div className='px-11 text-white'>
                     <p className='mt-5 text-2xl sm:text-sm text-justify font-medium text-[#555]'>{service?.description}</p>
 
                     <div className='mt-8'>

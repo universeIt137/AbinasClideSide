@@ -4,12 +4,14 @@ import Loader from '../Shared/Loader';
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
+import ImageUrl from '../../images/ImageUrl';
 
 
 const Media = () => {
     const axiosPublic = useAxiosPublic();
     const [media, setMedia] = useState([])
     const [isLoading, setIsLoading] = useState(false);
+    const { mediaUrl } = ImageUrl();
     useEffect(() => {
         setIsLoading(true)
         axiosPublic
@@ -22,7 +24,8 @@ const Media = () => {
                 console.log(err)
                 setIsLoading(false);
             })
-    }, [])
+    }, [axiosPublic])
+    console.log(media);
 
     return (
         <div className='relative'>
@@ -35,8 +38,8 @@ const Media = () => {
                     <PhotoProvider>
                         {media?.map((data, index) => (
                             <div key={index} className='w-[250px] h-[180px] sm:w-[120px] sm:h-[120px] md:w-[180px] md:h-[180px]'>
-                                <PhotoView src={data?.mediaImage}>
-                                    <img src={data?.mediaImage} alt="" className='w-full h-full p-3 transition-transform transform scale-100 hover:scale-110' />
+                                <PhotoView src={`${mediaUrl}/${data?.mediaImage}`}>
+                                    <img src={`${mediaUrl}/${data?.mediaImage}`} alt="" className='w-full h-full p-3 transition-transform transform scale-100 hover:scale-110' />
                                 </PhotoView>
                             </div>
                         ))}
