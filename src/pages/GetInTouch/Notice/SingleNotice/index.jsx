@@ -1,9 +1,11 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import { format } from 'date-fns';
+import ImageUrl from '../../../../images/ImageUrl';
 
 const singleNotice = ({ notice }) => {
     const { _id, noticeImage, title, description, createdAt } = notice;
+    const { noticeUrl } = ImageUrl();
 
     let formattedDate;
     if(createdAt){
@@ -21,8 +23,10 @@ const singleNotice = ({ notice }) => {
 
     return (
         <div className='w-[80%] sm:w-[80%] mx-auto flex items-center bg-[#8ed2f5] p-4 mt-10'>
-            <div>
-                <img src={noticeImage} alt='Notice' className='w-[160px] h-[160px] mr-2 sm:hidden' />
+            
+            <div >
+                <img src={`${noticeUrl}/${noticeImage}`} alt="Notice" className='w-[160px] h-[160px] mr-2'  />
+                
             </div>
             <div>
                 <h2 className='text-4xl sm:text-xl font-semibold'>{title}</h2><span>{formattedDate}</span>
